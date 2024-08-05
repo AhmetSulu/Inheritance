@@ -7,66 +7,51 @@ using System.Threading.Tasks;
 
 namespace Inheritance
 {
-
     using System;
 
-    public class BasePerson
+    public abstract class Person
     {
-        
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
 
-        
-        public BasePerson(string firstName, string lastName)
+        protected Person(string firstName, string lastName)
         {
             FirstName = firstName;
             LastName = lastName;
         }
 
-        
-        public void DisplayInformation()
-        {
-            Console.WriteLine($"First Name: {FirstName}, Last Name: {LastName}");
-        }
+        public abstract void DisplayInformation();
     }
 
-    public class Student : BasePerson
+    public class Student : Person
     {
-        
-        public string StudentNumber { get; set; }
+        public string StudentNumber { get; private set; }
 
-        
         public Student(string firstName, string lastName, string studentNumber)
             : base(firstName, lastName)
         {
             StudentNumber = studentNumber;
         }
 
-        
-        public void DisplayStudentInformation()
+        public override void DisplayInformation()
         {
-            Console.WriteLine($"Student Number: {StudentNumber}");
-            DisplayInformation(); 
+            Console.WriteLine($"Student Information:\nName: {FirstName}\nLast Name: {LastName}\nStudent Number: {StudentNumber}");
         }
     }
 
-    public class Teacher : BasePerson
+    public class Teacher : Person
     {
-        
-        public decimal Salary { get; set; }
+        public decimal Salary { get; private set; }
 
-        
         public Teacher(string firstName, string lastName, decimal salary)
             : base(firstName, lastName)
         {
             Salary = salary;
         }
 
-        
-        public void DisplayTeacherInformation()
+        public override void DisplayInformation()
         {
-            Console.WriteLine($"Salary: {Salary}");
-            DisplayInformation(); 
+            Console.WriteLine($"Teacher Information:\nName: {FirstName}\nLast Name: {LastName}\nSalary: {Salary}");
         }
     }
 }
