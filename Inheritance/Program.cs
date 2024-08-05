@@ -8,7 +8,8 @@ class Program
         Student student = new Student("Ahmet", "Sulu", "17");
         student.DisplayInformation();
 
-        
+        Console.WriteLine("---------------------------------------");
+
         Teacher teacher = new Teacher("Melekşen", "Yener", 58.000m);
         teacher.DisplayInformation();
     }
